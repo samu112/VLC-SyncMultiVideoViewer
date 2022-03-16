@@ -23,6 +23,8 @@ namespace VLC_SyncMultiVideoViewer
         private int OriginalViewHeight;
         private int OriginalViewWidth;
         private int OriginalTrackBarWidth;
+        private int OriginalPlayerBackgroundHeight;
+        private int OriginalPlayerBackgroundWidth;
 
         //Original Locations
         private Point OriginalViewLocation;
@@ -64,6 +66,8 @@ namespace VLC_SyncMultiVideoViewer
             OriginalViewHeight = videoView1.Height;
             OriginalViewWidth = videoView1.Width;
             OriginalTrackBarWidth = trackBar1.Width;
+            OriginalPlayerBackgroundHeight = PlayerBackground.Height;
+            OriginalPlayerBackgroundWidth = PlayerBackground.Width;
 
             //Save Locations
             OriginalViewLocation = videoView1.Location;
@@ -88,6 +92,9 @@ namespace VLC_SyncMultiVideoViewer
             trackBar1.Width = OriginalTrackBarWidth + WidthDifference;
             //Relocate the "Resume/Pause" Button
             Resume_Pause_Button.Location = new Point(this.Width / 2 - Resume_Pause_Button.Width, Resume_Pause_Button.Location.Y);
+            //Player Background
+            PlayerBackground.Width = OriginalPlayerBackgroundHeight + HeightDifference;
+            PlayerBackground.Width = OriginalPlayerBackgroundWidth + WidthDifference;
         }
 
         private void PlayerForm_Load(object sender, EventArgs e)
@@ -205,7 +212,6 @@ namespace VLC_SyncMultiVideoViewer
                         BeforeFullScreenViewPosition = videoView1.Location;
                         BeforeFullScreenViewHeight = videoView1.Height;
                         BeforeFullScreenViewWidth = videoView1.Width;
-                        //VolumeBar.Location = new Point(this.Width - 50 - VolumeBar.Width, (this.Height - VolumeBar.Height) / 10);
 
                         //Make it fullscreen
                         this.WindowState = FormWindowState.Normal;
@@ -217,11 +223,7 @@ namespace VLC_SyncMultiVideoViewer
                         FullScreeenTimer.Enabled = true;
                         fullscreen = true;
                         //Hide toolbars
-                        trackBar1.Hide();
-                        CurrentTimeLabel.Hide();
-                        EndTimeLabel.Hide();
-                        Resume_Pause_Button.Hide();
-
+                        HideFullScreenControls();
                     }
                     else
                     {
@@ -239,10 +241,7 @@ namespace VLC_SyncMultiVideoViewer
                         FullScreeenTimer.Enabled = false;
                         fullscreen = false;
                         //Show Toolbars
-                        trackBar1.Show();
-                        CurrentTimeLabel.Show();
-                        EndTimeLabel.Show();
-                        Resume_Pause_Button.Show();
+                        ShowFullScreenControls();
                     }
                 }
                 //Resume/Pause -- SPACE
@@ -316,10 +315,7 @@ namespace VLC_SyncMultiVideoViewer
                         FullScreeenTimer.Enabled = false;
                         fullscreen = false;
                         //Show Toolbars
-                        trackBar1.Show();
-                        CurrentTimeLabel.Show();
-                        EndTimeLabel.Show();
-                        Resume_Pause_Button.Show();
+                        ShowFullScreenControls();
                     }
                 }
             }
@@ -343,7 +339,7 @@ namespace VLC_SyncMultiVideoViewer
             _main.Start_Pause_Toggle();
             Resume_Pause_Button.Enabled = false;
             Resume_Pause_Button.Enabled = true;
-            //this.Focus();
+            this.Focus();
         }
 
         private void PlayerForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -364,10 +360,7 @@ namespace VLC_SyncMultiVideoViewer
                 {
                     //Show Controls in FullScreen
                     showControls = true;
-                    trackBar1.Show();
-                    CurrentTimeLabel.Show();
-                    EndTimeLabel.Show();
-                    Resume_Pause_Button.Show();
+                    ShowFullScreenControls();
 
                 }
             }
@@ -377,11 +370,7 @@ namespace VLC_SyncMultiVideoViewer
                 {
                     //Show Controls in FullScreen
                     showControls = false;
-                    trackBar1.Hide();
-                    CurrentTimeLabel.Hide();
-                    EndTimeLabel.Hide();
-                    Resume_Pause_Button.Hide();
-
+                    HideFullScreenControls();
                 }
             }
         }
@@ -391,6 +380,23 @@ namespace VLC_SyncMultiVideoViewer
             trackBar1.Maximum = Convert.ToInt32(videoView1.MediaPlayer.Media.Duration / 1000);
             TimeSpan t = TimeSpan.FromSeconds(Convert.ToInt32(videoView1.MediaPlayer.Media.Duration / 1000));
             EndTimeLabel.Text = t.ToString(@"hh\:mm\:ss");
+        }
+
+        private void HideFullScreenControls()
+        {
+            trackBar1.Hide();
+            CurrentTimeLabel.Hide();
+            EndTimeLabel.Hide();
+            Resume_Pause_Button.Hide();
+            PlayerBackground.Hide();
+        }
+        private void ShowFullScreenControls()
+        {
+            PlayerBackground.Show();
+            trackBar1.Show();
+            CurrentTimeLabel.Show();
+            EndTimeLabel.Show();
+            Resume_Pause_Button.Show();
         }
     }
 }

@@ -40,6 +40,7 @@ namespace VLC_SyncMultiVideoViewer
             this.VolumeBar = new System.Windows.Forms.TrackBar();
             this.VolumeText = new System.Windows.Forms.Label();
             this.FullScreeenTimer = new System.Windows.Forms.Timer(this.components);
+            this.PlayerBackground = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.videoView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VolumeBar)).BeginInit();
@@ -136,6 +137,14 @@ namespace VLC_SyncMultiVideoViewer
             this.FullScreeenTimer.Interval = 1000;
             this.FullScreeenTimer.Tick += new System.EventHandler(this.FullScreeenTimer_Tick);
             // 
+            // PlayerBackground
+            // 
+            this.PlayerBackground.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PlayerBackground.Location = new System.Drawing.Point(0, 405);
+            this.PlayerBackground.Name = "PlayerBackground";
+            this.PlayerBackground.Size = new System.Drawing.Size(822, 50);
+            this.PlayerBackground.TabIndex = 7;
+            // 
             // PlayerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -147,6 +156,7 @@ namespace VLC_SyncMultiVideoViewer
             this.Controls.Add(this.CurrentTimeLabel);
             this.Controls.Add(this.EndTimeLabel);
             this.Controls.Add(this.trackBar1);
+            this.Controls.Add(this.PlayerBackground);
             this.Controls.Add(this.videoView1);
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(818, 497);
@@ -177,5 +187,6 @@ namespace VLC_SyncMultiVideoViewer
         private System.Windows.Forms.TrackBar VolumeBar;
         private System.Windows.Forms.Label VolumeText;
         private System.Windows.Forms.Timer FullScreeenTimer;
+        private System.Windows.Forms.FlowLayoutPanel PlayerBackground;
     }
 }
