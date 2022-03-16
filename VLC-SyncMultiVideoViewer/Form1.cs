@@ -57,7 +57,7 @@ namespace VLC_SyncMultiVideoViewer
             //Coutns how many ticks the error presents
             errorCounter = 0;
             //Add base value to SpeedBar
-            Speed_Label.Text = SpeedBarValueToText();
+            Speed_Label.Text = "x " + SpeedBarValueToText();
         }
 
         private void Add_Button_Click(object sender, EventArgs e)
@@ -320,6 +320,7 @@ namespace VLC_SyncMultiVideoViewer
 
                 }
         }
+
         private void TrackBarMaximumFixer()
         {
             errorCounter++;
@@ -334,15 +335,34 @@ namespace VLC_SyncMultiVideoViewer
             test.Show();
         }
 
-        private void Speed_button_Click(object sender, EventArgs e)
-        {
-            PlayerForms[0].videoView1.MediaPlayer.SetRate(2);//2=2x of the original speed
-        }
+
+        private bool SpeedBarMouseDown = false;
+        private bool SpeedBarScrolling = false;
 
         private void SpeedBar_Scroll(object sender, EventArgs e)
         {
-            Speed_Label.Text = SpeedBarValueToText();
+            Speed_Label.Text = "x " + SpeedBarValueToText();
+            SpeedBarScrolling = true;
         }
+
+        private void SpeedBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (SpeedBarMouseDown == true && SpeedBarScrolling == true)
+            {
+                foreach (var form in PlayerForms)
+                {
+                    form.videoView1.MediaPlayer.SetRate((float)SpeedBar.Value * (float)0.25);//2=2x of the original speed
+                }
+            }
+            SpeedBarMouseDown = false;
+            SpeedBarScrolling = false;
+        }
+
+        private void SpeedBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            SpeedBarMouseDown = true;
+        }
+
         private string SpeedBarValueToText()
         {
             string value = ((double)SpeedBar.Value * 0.25).ToString();

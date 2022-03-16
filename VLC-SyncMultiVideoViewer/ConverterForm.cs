@@ -34,6 +34,16 @@ namespace VLC_SyncMultiVideoViewer
 
         private void Fix_Button_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Sorry, not implemented yet.\nDo you want to download a program and fix the file manually?", "Convert", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start(new ProcessStartInfo
+                {
+                    FileName = "https://handbrake.fr/",
+                    UseShellExecute = true
+                });
+            }
+            this.Close();
+            return;
             for (int i = 0; i < importedFiles.Count; i++)
             {
                 Conversion(importedFiles[i]);

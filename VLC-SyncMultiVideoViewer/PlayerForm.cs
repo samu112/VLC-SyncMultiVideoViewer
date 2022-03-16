@@ -358,12 +358,8 @@ namespace VLC_SyncMultiVideoViewer
         private void FullScreeenTimer_Tick(object sender, EventArgs e)
         {
             Point mouseRelativePosition = this.PointToClient(Cursor.Position);
-            //label1.Text = "X: " + mouseRelativePosition.X + "   Y: " + mouseRelativePosition.Y;
-            label2.Text = mouseRelativePosition.Y.ToString() + "||" + (trackBar1.Location.Y - trackBar1.Height).ToString();
-            //label2.Text = "X: " + trackBar1.Location.X + "   Y: " + trackBar1.Location.Y;
             if (mouseRelativePosition.Y > trackBar1.Location.Y - trackBar1.Height)
             {
-                label1.Text = "Show";
                 if (showControls == false)
                 {
                     //Show Controls in FullScreen
@@ -377,7 +373,6 @@ namespace VLC_SyncMultiVideoViewer
             }
             else
             {
-                label1.Text = "Hide";
                 if (showControls == true)
                 {
                     //Show Controls in FullScreen

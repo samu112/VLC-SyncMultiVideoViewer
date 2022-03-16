@@ -141,7 +141,7 @@ namespace VLC_SyncMultiVideoViewer
             this.MaximumSize = new System.Drawing.Size(818, 497);
             this.MinimumSize = new System.Drawing.Size(818, 497);
             this.Name = "ConverterForm";
-            this.Text = "ConverterForm";
+            this.Text = "Converter";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

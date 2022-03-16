@@ -43,9 +43,9 @@ namespace VLC_SyncMultiVideoViewer
             this.CurrentTimeLabel = new System.Windows.Forms.Label();
             this.EndTimeLabel = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.Speed_button = new System.Windows.Forms.Button();
             this.SpeedBar = new System.Windows.Forms.TrackBar();
             this.Speed_Label = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedBar)).BeginInit();
             this.SuspendLayout();
@@ -154,29 +154,20 @@ namespace VLC_SyncMultiVideoViewer
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(48, 252);
+            this.button2.Location = new System.Drawing.Point(38, 252);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(94, 29);
             this.button2.TabIndex = 9;
-            this.button2.Text = "button2";
+            this.button2.Text = "Converter";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // Speed_button
-            // 
-            this.Speed_button.Location = new System.Drawing.Point(662, 261);
-            this.Speed_button.Name = "Speed_button";
-            this.Speed_button.Size = new System.Drawing.Size(94, 29);
-            this.Speed_button.TabIndex = 10;
-            this.Speed_button.Text = "Speed";
-            this.Speed_button.UseVisualStyleBackColor = true;
-            this.Speed_button.Click += new System.EventHandler(this.Speed_button_Click);
             // 
             // SpeedBar
             // 
             this.SpeedBar.LargeChange = 0;
-            this.SpeedBar.Location = new System.Drawing.Point(662, 112);
-            this.SpeedBar.Maximum = 20;
+            this.SpeedBar.Location = new System.Drawing.Point(701, 151);
+            this.SpeedBar.Maximum = 16;
+            this.SpeedBar.Minimum = 1;
             this.SpeedBar.Name = "SpeedBar";
             this.SpeedBar.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.SpeedBar.Size = new System.Drawing.Size(56, 130);
@@ -184,24 +175,36 @@ namespace VLC_SyncMultiVideoViewer
             this.SpeedBar.TabIndex = 11;
             this.SpeedBar.Value = 4;
             this.SpeedBar.Scroll += new System.EventHandler(this.SpeedBar_Scroll);
+            this.SpeedBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SpeedBar_MouseDown);
+            this.SpeedBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SpeedBar_MouseUp);
             // 
             // Speed_Label
             // 
             this.Speed_Label.AutoSize = true;
-            this.Speed_Label.Location = new System.Drawing.Point(710, 170);
+            this.Speed_Label.Location = new System.Drawing.Point(738, 209);
             this.Speed_Label.Name = "Speed_Label";
             this.Speed_Label.Size = new System.Drawing.Size(50, 20);
             this.Speed_Label.TabIndex = 12;
             this.Speed_Label.Text = "label1";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(690, 120);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 28);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Speed";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Speed_Label);
             this.Controls.Add(this.SpeedBar);
-            this.Controls.Add(this.Speed_button);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.EndTimeLabel);
             this.Controls.Add(this.CurrentTimeLabel);
@@ -241,9 +244,9 @@ namespace VLC_SyncMultiVideoViewer
         private System.Windows.Forms.Label CurrentTimeLabel;
         private System.Windows.Forms.Label EndTimeLabel;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button Speed_button;
         private System.Windows.Forms.TrackBar SpeedBar;
         private System.Windows.Forms.Label Speed_Label;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -39,8 +39,6 @@ namespace VLC_SyncMultiVideoViewer
             this.Resume_Pause_Button = new System.Windows.Forms.Button();
             this.VolumeBar = new System.Windows.Forms.TrackBar();
             this.VolumeText = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.FullScreeenTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.videoView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -50,11 +48,13 @@ namespace VLC_SyncMultiVideoViewer
             // videoView1
             // 
             this.videoView1.BackColor = System.Drawing.Color.Black;
+            this.videoView1.Enabled = false;
             this.videoView1.Location = new System.Drawing.Point(12, 12);
             this.videoView1.MediaPlayer = null;
             this.videoView1.Name = "videoView1";
             this.videoView1.Size = new System.Drawing.Size(776, 393);
             this.videoView1.TabIndex = 0;
+            this.videoView1.TabStop = false;
             this.videoView1.Text = "videoView1";
             // 
             // trackBar1
@@ -68,6 +68,7 @@ namespace VLC_SyncMultiVideoViewer
             this.trackBar1.Size = new System.Drawing.Size(775, 30);
             this.trackBar1.SmallChange = 0;
             this.trackBar1.TabIndex = 1;
+            this.trackBar1.TabStop = false;
             this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
@@ -103,6 +104,7 @@ namespace VLC_SyncMultiVideoViewer
             this.Resume_Pause_Button.Name = "Resume_Pause_Button";
             this.Resume_Pause_Button.Size = new System.Drawing.Size(136, 29);
             this.Resume_Pause_Button.TabIndex = 4;
+            this.Resume_Pause_Button.TabStop = false;
             this.Resume_Pause_Button.Text = "Resume/Pause";
             this.Resume_Pause_Button.UseVisualStyleBackColor = true;
             this.Resume_Pause_Button.Click += new System.EventHandler(this.Resume_Pause_Button_Click);
@@ -129,24 +131,6 @@ namespace VLC_SyncMultiVideoViewer
             this.VolumeText.TabIndex = 6;
             this.VolumeText.Text = "100%";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 20);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "label1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 20);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "label2";
-            // 
             // FullScreeenTimer
             // 
             this.FullScreeenTimer.Interval = 1000;
@@ -157,8 +141,6 @@ namespace VLC_SyncMultiVideoViewer
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.VolumeText);
             this.Controls.Add(this.VolumeBar);
             this.Controls.Add(this.Resume_Pause_Button);
@@ -194,8 +176,6 @@ namespace VLC_SyncMultiVideoViewer
         private System.Windows.Forms.Button Resume_Pause_Button;
         private System.Windows.Forms.TrackBar VolumeBar;
         private System.Windows.Forms.Label VolumeText;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer FullScreeenTimer;
     }
 }
